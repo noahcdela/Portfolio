@@ -31,13 +31,39 @@ nav {
         border-bottom: 2px solid $color_main;
     }
     a {
+        position: relative;
         display: block;
         text-decoration: none;
         padding: 1em 0 .5em 0;
         border-bottom: 2px solid transparent;
         &:hover {
-            border-bottom: 2px solid $color_main;
             color: $color_main;
         }
+    }
+    a:before, a:after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        bottom: -2px;
+        background: black;
+    }
+    a:before {
+        left: 0;
+    }
+    a:after {
+        right: 0;
+        background: black;
+        transition: width 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    a:hover:before {
+        background: black;
+        width: 100%;
+        transition: width 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    a:hover:after {
+        background: transparent;
+        width: 100%;
+        transition: 0s;
     }
 }
